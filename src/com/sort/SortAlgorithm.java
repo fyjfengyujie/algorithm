@@ -16,21 +16,14 @@ public class SortAlgorithm {
 
     public static int getKey(int []array,int l,int r){
         int key = array[l];
-        int p = l;
         while (l < r) {
-            while (l<r && array[l] <= key) l++;
-            int temp = array[l];
-            array[l] = array[r];
-            array[r] = temp;
             while (l<r && array[r] >= key) r--;
-            temp = array[l];
             array[l] = array[r];
-            array[r] = temp;
+            while (l<r && array[l] <= key) l++;
+            array[r] = array[l];
         }
-        int temp = array[p];
-        array[p] = array[l-1];
-        array[l-1] = temp;
-        return l-1;
+        array[l] = key;
+        return l;
     }
 
     public static void main(String []args){
